@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ساعت کار کافه</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f2eb;--card:#fff;--ink:#2b1f16;--mut:#8f7d6c;--acc:#8b5a2b;--soft:#f3e8da;--line:#eadfd0;--ok:#2f7d4f;--bad:#b3392f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17110d;--card:#241b15;--ink:#f3e9dc;--mut:#a89680;--acc:#e0a96d;--soft:#33261c;--line:#35291f;--ok:#6cc08b;--bad:#e8776d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17110d;--card:#241b15;--ink:#f3e9dc;--mut:#a89680;--acc:#e0a96d;--soft:#33261c;--line:#35291f;--ok:#6cc08b;--bad:#e8776d;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,system-ui,sans-serif;line-height:1.7;padding-bottom:96px}
+.w{max-width:520px;margin:0 auto;padding:16px}
+h1{font-size:1.2rem;margin:0 0 12px;font-weight:800}
+h2{font-size:.95rem;margin:20px 4px 8px;color:var(--mut);font-weight:600}
+.hero{background:linear-gradient(135deg,#5e3a1d,#a9713b);color:#fff;border-radius:22px;padding:18px;box-shadow:0 8px 24px rgba(94,58,29,.25)}
+.hero small{opacity:.8;font-size:.8rem}
+.hero .big{font-size:1.9rem;font-weight:800;line-height:1.3;margin:2px 0 4px}
+.hero .sub{opacity:.9;font-size:.85rem}
+.chips{display:flex;gap:8px;margin-top:14px}
+.chips div{flex:1;background:rgba(255,255,255,.15);border-radius:14px;padding:8px 10px;font-size:.78rem}
+.chips b{display:block;font-size:.88rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+label{display:block;font-size:.78rem;color:var(--mut);margin:0 2px 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.g3{display:grid;grid-template-columns:1fr 1.7fr 1fr;gap:6px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f{margin-bottom:14px}
+.jl{font-size:.85rem;color:var(--acc);font-weight:600;margin:6px 2px 0}
+.btn{font:inherit;cursor:pointer;border:0;border-radius:14px;padding:13px;background:var(--acc);color:#fff;font-weight:800;width:100%;font-size:1rem}
+[data-theme="dark"] .btn,:root:not([data-theme="light"]) .btn{color:#1b120b}
+.seg{display:flex;background:var(--soft);border-radius:14px;padding:4px;margin-bottom:14px}
+.seg button{flex:1;font:inherit;border:0;background:none;padding:8px;border-radius:11px;color:var(--mut);font-weight:600;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:10px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:14px 16px}
+summary::-webkit-details-marker{display:none}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.ph b{font-size:.95rem}.ph small{display:block;color:var(--mut);font-size:.78rem}
+.amt{font-weight:800;color:var(--ok);white-space:nowrap}
+.bar{height:6px;background:var(--soft);border-radius:6px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:6px}
+.body{border-top:1px dashed var(--line);padding:4px 16px 8px}
+.it{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.it:last-child{border:0}
+.it small{color:var(--mut);display:block;font-size:.76rem}
+.it .r{display:flex;flex-direction:column;align-items:flex-end;white-space:nowrap;font-size:.88rem;font-weight:600}
+.del{font:inherit;font-size:.75rem;border:1px solid var(--bad);background:none;color:var(--bad);cursor:pointer;padding:2px 10px;border-radius:10px;margin-top:4px}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}
+.stat small{display:block;color:var(--mut);font-size:.76rem}.stat b{font-size:1rem}
+.empty{color:var(--mut);text-align:center;padding:22px 8px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));gap:8px;z-index:5}
+nav button{flex:1;font:inherit;border:0;background:none;color:var(--mut);padding:6px;border-radius:12px;cursor:pointer;font-weight:600}
+nav button span{display:block;font-size:1.25rem;line-height:1.2}
+nav button.on{color:var(--acc);background:var(--soft)}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>☕ ساعت کار کافه</h1>
+<div class="hero" id="hero"></div>
+
+<section id="vAdd">
+  <h2>ثبت شیفت جدید</h2>
+  <div class="card">
+    <div class="f"><label>تاریخ</label>
+      <div class="g3"><select id="jd"></select><select id="jm"></select><select id="jy"></select></div>
+      <div class="jl" id="jl"></div></div>
+    <div class="g2 f">
+      <div><label>از ساعت</label><input type="time" id="s" value="09:00"></div>
+      <div><label>تا ساعت</label><input type="time" id="e" value="17:00"></div>
+    </div>
+    <div class="f"><label>نرخ ساعتی (تومان)</label><input type="number" id="rate" value="40000" inputmode="numeric"></div>
+    <button class="btn" id="add">ثبت شیفت</button>
+  </div>
+  <h2>آخرین شیفت‌ها</h2>
+  <div class="card" id="recent"></div>
+  <h2>پشتیبان‌گیری</h2>
+  <div class="card">
+    <small style="color:var(--mut)">کد پشتیبان رو بگیر و توی Google Keep یا ایمیل خودت ذخیره کن. اگه اطلاعات پاک شد یا گوشی عوض شد، همان کد را اینجا بچسبان.</small>
+    <textarea id="bk" rows="4" style="margin:10px 0;direction:ltr;font-size:.75rem" placeholder="کد پشتیبان اینجا قرار می‌گیرد"></textarea>
+    <div class="g2"><button class="btn" id="bkMake">ساخت کد پشتیبان</button><button class="btn" id="bkRes" style="background:var(--soft);color:var(--ink)">بازیابی از کد</button></div>
+    <div class="jl" id="bkMsg"></div>
+  </div>
+</section>
+
+<section id="vRep" class="hide">
+  <div class="seg" id="tabs">
+    <button data-t="week" class="on">هفتگی</button>
+    <button data-t="month">ماهانه</button>
+    <button data-t="all">کل</button>
+  </div>
+  <div id="rep"></div>
+</section>
+
+<section id="vPay" class="hide">
+  <h2>خلاصه‌ی حساب (تومان)</h2>
+  <div class="stat" id="payStat" style="grid-template-columns:repeat(3,1fr)"></div>
+  <h2>ثبت دریافتی جدید</h2>
+  <div class="card">
+    <div class="f"><label>تاریخ دریافت</label>
+      <div class="g3"><select id="qd"></select><select id="qm"></select><select id="qy"></select></div>
+      <div class="jl" id="ql"></div></div>
+    <div class="f"><label>مبلغ دریافتی (تومان)</label><input type="number" id="pamt" inputmode="numeric" placeholder="مثلاً ۵۰۰۰۰۰"></div>
+    <button class="btn" id="padd">ثبت دریافتی</button>
+  </div>
+  <h2>سابقه‌ی دریافتی‌ها</h2>
+  <div class="card" id="paylist"></div>
+</section>
+</div>
+
+<nav>
+  <button data-v="add" class="on"><span>➕</span>ثبت</button>
+  <button data-v="rep"><span>📊</span>گزارش</button>
+  <button data-v="pay"><span>💰</span>دریافتی</button>
+</nav>
+
+<script>
+const KEY='cafeHours.v1';
+const WD=['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'];
+const MN=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const jf=new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn',{year:'numeric',month:'numeric',day:'numeric'});
+const fa=n=>Number(n).toLocaleString('fa-IR');
+const fy=n=>Number(n).toLocaleString('fa-IR',{useGrouping:false});
+let data=[],pays=[],tab='week';
+try{data=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){data=[]}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}
+try{pays=JSON.parse(localStorage.getItem(KEY+'.pay')||'[]')}catch(e){pays=[]}
+function savePays(){try{localStorage.setItem(KEY+'.pay',JSON.stringify(pays))}catch(e){}}
+const $=id=>document.getElementById(id);
+function pd(s){const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c,12)}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function jp(d){const o={};jf.formatToParts(d).forEach(p=>o[p.type]=+p.value);return o}
+function jtxt(d){const j=jp(d);return fa(j.day)+' '+MN[j.month-1]+' '+fy(j.year)}
+function jshort(d){const j=jp(d);return fa(j.day)+' '+MN[j.month-1]}
+function mins(s,e){const a=s.split(':'),b=e.split(':');let m=(b[0]*60+ +b[1])-(a[0]*60+ +a[1]);if(m<=0)m+=1440;return m}
+function fh(m){const h=Math.floor(m/60),r=m%60;return (h?fa(h)+' ساعت':'')+(h&&r?' و ':'')+(r?fa(r)+' دقیقه':'')||'۰'}
+function money(x){return fa(Math.round(x))+' تومان'}
+function amt(i){return i.m/60*i.rate}
+function weekStart(d){const x=new Date(d);x.setDate(x.getDate()-((d.getDay()+1)%7));return x}
+function sum(a){return a.reduce((t,i)=>({m:t.m+i.m,a:t.a+amt(i)}),{m:0,a:0})}
+function mkey(d){const q=jp(d);return q.year+'-'+String(q.month).padStart(2,'0')}
+function fill(s,a,sel){s.innerHTML=a.map(([v,t])=>`<option value="${v}"${v==sel?' selected':''}>${t}</option>`).join('')}
+function j2g(y,m,d){let g=new Date(y+621,2,21,12);g.setDate(g.getDate()+(m<=6?(m-1)*31:186+(m-7)*30)+d-1);for(let i=0;i<8;i++){const q=jp(g),df=(q.year-y)*372+(q.month-m)*31+(q.day-d);if(!df)return g;g.setDate(g.getDate()-Math.sign(df))}return d>29?j2g(y,m,d-1):g}
+function getD(){return iso(j2g(+$('jy').value,+$('jm').value,+$('jd').value))}
+function upd(){const m=+$('jm').value,mx=m<=6?31:30,c=Math.min(+$('jd').value||1,mx);fill($('jd'),Array.from({length:mx},(_,i)=>[i+1,fa(i+1)]),c);const g=pd(getD());$('jl').textContent=WD[g.getDay()]+'، '+jtxt(g)}
+const T=jp(new Date());
+fill($('jy'),[T.year-1,T.year,T.year+1].map(y=>[y,fy(y)]),T.year);
+fill($('jm'),MN.map((n,i)=>[i+1,n]),T.month);
+fill($('jd'),Array.from({length:31},(_,i)=>[i+1,fa(i+1)]),T.day);
+['jy','jm','jd'].forEach(i=>$(i).addEventListener('change',upd));upd();
+try{const r=localStorage.getItem(KEY+'.rate');if(r)$('rate').value=r}catch(e){}
+function ab(d,s){const[y,m,c]=d.split('-').map(Number),t=s.split(':');return Date.UTC(y,m-1,c)/6e4+ +t[0]*60+ +t[1]}
+$('add').onclick=()=>{
+  const d=getD(),rate=+$('rate').value;
+  if(!$('s').value||!$('e').value||!(rate>0)){const b=$('add');b.textContent='⚠ ساعت‌ها و نرخ را کامل وارد کن';setTimeout(()=>b.textContent='ثبت شیفت',1800);return}
+  const A=ab(d,$('s').value),B=A+mins($('s').value,$('e').value);
+  if(data.some(i=>{const X=ab(i.d,i.s);return A<X+i.m&&X<B})){const k=$('add');k.textContent='⚠ این ساعت‌ها با یک شیفت ثبت‌شده همپوشانی دارد';setTimeout(()=>k.textContent='ثبت شیفت',2800);return}
+  try{localStorage.setItem(KEY+'.rate',rate)}catch(e){}
+  data.push({id:Date.now(),d,s:$('s').value,e:$('e').value,m:mins($('s').value,$('e').value),rate});
+  save();render();
+  const b=$('add');b.textContent='✓ ثبت شد';setTimeout(()=>b.textContent='ثبت شیفت',1200);
+};
+document.querySelector('nav').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b));
+  ['Add','Rep','Pay'].forEach(v=>$('v'+v).classList.toggle('hide',b.dataset.v!==v.toLowerCase()));scrollTo(0,0)};
+$('tabs').onclick=e=>{const t=e.target.dataset.t;if(!t)return;tab=t;[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.t===t));render()};
+let pend=null;
+function del(id,b){if(pend!==id){pend=id;document.querySelectorAll('.del').forEach(x=>x.textContent='🗑 حذف');b.textContent='⚠ تأیید حذف';setTimeout(()=>{if(pend===id){pend=null;b.textContent='🗑 حذف'}},3000);return}pend=null;data=data.filter(i=>i.id!==id);save();render()}
+const ft=s=>s.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+function row(i){const d=pd(i.d);return `<div class="it"><div><b>${WD[d.getDay()]} ${jshort(d)}</b><small>از ساعت ${ft(i.s)} تا ${ft(i.e)} · ${fh(i.m)}</small></div><div class="r">${money(amt(i))}<button class="del" onclick="del(${i.id},this)" aria-label="حذف">🗑 حذف</button></div></div>`}
+function group(fn){const g={};data.forEach(i=>{const k=fn(pd(i.d));(g[k]=g[k]||{k,items:[]}).items.push(i)});return Object.values(g).sort((a,b)=>b.k.localeCompare(a.k))}
+function render(){
+  const now=new Date(),ws=iso(weekStart(now)),mk=mkey(now);
+  const wk=sum(data.filter(i=>iso(weekStart(pd(i.d)))===ws));
+  const mo=data.filter(i=>mkey(pd(i.d))===mk),ms=sum(mo),al=sum(data);
+  const paid=pays.reduce((t,p)=>t+p.a,0),rem=al.a-paid;
+  $('hero').innerHTML=`<small>درآمد ${MN[T.month-1]} ماه</small><div class="big">${money(ms.a)}</div><div class="sub">${fh(ms.m)} کار در ${fa(mo.length)} شیفت</div>
+  <div class="chips"><div>این هفته<b>${fh(wk.m)}</b>${money(wk.a)}</div><div>مجموع کل<b>${fh(al.m)}</b>${money(al.a)}</div></div>
+  <div class="chips" style="margin-top:8px"><div>دریافت‌شده<b>${money(paid)}</b></div><div style="background:rgba(255,255,255,.3)">${rem<0?'بیش از طلب':'باقیمانده برای دریافت'}<b>${money(Math.abs(rem))}</b></div></div>`;
+  $('payStat').innerHTML=`<div><small>کل دستمزد</small><b>${fa(Math.round(al.a))}</b></div><div><small>دریافت‌شده</small><b>${fa(paid)}</b></div><div><small>${rem<0?'بیش از طلب':'باقیمانده'}</small><b style="color:var(--ok)">${fa(Math.abs(Math.round(rem)))}</b></div>`;
+  const pl=[...pays].sort((a,b)=>b.d.localeCompare(a.d)||b.id-a.id);
+  $('paylist').innerHTML=pl.length?pl.map(p=>{const d=pd(p.d);return `<div class="it"><div><b>${WD[d.getDay()]} ${jshort(d)}</b><small>${jtxt(d)}</small></div><div class="r">${money(p.a)}<button class="del" onclick="delP(${p.id},this)" aria-label="حذف">🗑 حذف</button></div></div>`}).join(''):'<div class="empty">هنوز دریافتی ثبت نشده</div>';
+  const rec=[...data].sort((a,b)=>b.d.localeCompare(a.d)||b.s.localeCompare(a.s)).slice(0,4);
+  $('recent').innerHTML=rec.length?rec.map(row).join(''):'<div class="empty">هنوز شیفتی ثبت نشده</div>';
+  if(!data.length){$('rep').innerHTML='<div class="card empty">برای دیدن گزارش، اول یه شیفت ثبت کن</div>';return}
+  if(tab==='all'){
+    const days=new Set(data.map(i=>i.d)).size;
+    $('rep').innerHTML=`<div class="hero"><small>مجموع کل</small><div class="big">${money(al.a)}</div><div class="sub">${fh(al.m)}</div></div>
+    <h2>جزئیات</h2><div class="stat"><div><small>تعداد شیفت</small><b>${fa(data.length)}</b></div><div><small>روز کاری</small><b>${fa(days)}</b></div>
+    <div><small>میانگین هر شیفت</small><b>${fh(al.m/data.length)}</b></div><div><small>میانگین درآمد شیفت</small><b>${fa(Math.round(al.a/data.length))}</b></div></div>`;
+    return}
+  let ps=tab==='week'?group(d=>iso(weekStart(d))).map(g=>{const s=pd(g.k),e=new Date(s);e.setDate(e.getDate()+6);const tu=new Date(s);tu.setDate(tu.getDate()+3);const q=jp(tu),nm='هفته '+['اول','دوم','سوم','چهارم','پنجم'][Math.floor((q.day-1)/7)]+' '+MN[q.month-1];return{t:nm,sub:(g.k===ws?'این هفته · ':'')+jshort(s)+' تا '+jshort(e),items:g.items}})
+   :group(mkey).map(g=>{const[y,m]=g.k.split('-');return{t:MN[m-1]+' '+fy(y),sub:g.k===mk?'ماه جاری':'',items:g.items}});
+  const tots=ps.map(p=>sum(p.items)),mx=Math.max(...tots.map(t=>t.a));
+  $('rep').innerHTML=ps.map((p,n)=>{const s=tots[n];return `<details${n===0?' open':''}><summary><div class="ph"><div><b>${p.t}</b><small>${p.sub?p.sub+' · ':''}${fa(p.items.length)} شیفت · ${fh(s.m)}</small></div><div class="amt">${money(s.a)}</div></div><div class="bar"><i style="width:${Math.max(4,s.a/mx*100)}%"></i></div></summary><div class="body">${p.items.sort((a,b)=>a.d.localeCompare(b.d)).map(row).join('')}</div></details>`}).join('');
+}
+$('bkMake').onclick=()=>{const t=$('bk'),m=$('bkMsg'),ok='کد ساخته شد. متن را کپی کن و توی Google Keep یا ایمیل ذخیره‌ش کن.';t.value=JSON.stringify({v:1,data,pays});t.focus();t.select();m.textContent=ok;try{navigator.clipboard.writeText(t.value).then(()=>{m.textContent='✓ کد ساخته و کپی شد. حالا توی Google Keep یا ایمیل بچسبانش.'},()=>{})}catch(e){}};
+$('bkRes').onclick=()=>{try{const o=JSON.parse($('bk').value.trim());if(!Array.isArray(o.data)||!Array.isArray(o.pays))throw 0;const a=new Set(data.map(i=>i.id)),b=new Set(pays.map(i=>i.id));const nd=o.data.filter(i=>i&&i.d&&i.s&&i.e&&i.m>0&&i.rate>0&&!a.has(i.id)),np=o.pays.filter(i=>i&&i.d&&i.a>0&&!b.has(i.id));data=data.concat(nd);pays=pays.concat(np);save();savePays();render();$('bkMsg').textContent='✓ بازیابی شد: '+fa(nd.length)+' شیفت و '+fa(np.length)+' دریافتی اضافه شد.'}catch(e){$('bkMsg').textContent='⚠ کد معتبر نیست. کد پشتیبان را کامل بچسبان.'}};
+function delP(id,b){if(pend!==id){pend=id;document.querySelectorAll('.del').forEach(x=>x.textContent='🗑 حذف');b.textContent='⚠ تأیید حذف';setTimeout(()=>{if(pend===id){pend=null;b.textContent='🗑 حذف'}},3000);return}pend=null;pays=pays.filter(p=>p.id!==id);savePays();render()}
+function gQ(){return iso(j2g(+$('qy').value,+$('qm').value,+$('qd').value))}
+function updQ(){const m=+$('qm').value,mx=m<=6?31:30,c=Math.min(+$('qd').value||1,mx);fill($('qd'),Array.from({length:mx},(_,i)=>[i+1,fa(i+1)]),c);const g=pd(gQ());$('ql').textContent=WD[g.getDay()]+'، '+jtxt(g)}
+fill($('qy'),[T.year-1,T.year,T.year+1].map(y=>[y,fy(y)]),T.year);
+fill($('qm'),MN.map((n,i)=>[i+1,n]),T.month);
+fill($('qd'),Array.from({length:31},(_,i)=>[i+1,fa(i+1)]),T.day);
+['qy','qm','qd'].forEach(i=>$(i).addEventListener('change',updQ));updQ();
+$('padd').onclick=()=>{const a=Math.round(+$('pamt').value),b=$('padd');if(!(a>0)){b.textContent='⚠ مبلغ را وارد کن';setTimeout(()=>b.textContent='ثبت دریافتی',1800);return}pays.push({id:Date.now(),d:gQ(),a});savePays();$('pamt').value='';render();b.textContent='✓ ثبت شد';setTimeout(()=>b.textContent='ثبت دریافتی',1200)};
+render();
+</script>
+</body>
+</html>
